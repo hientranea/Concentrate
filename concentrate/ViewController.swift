@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"]
-    let game = Concentrate(numberOfPairsOfCards: 4)
+    let game = Concentrate(numberOfPairsOfCards: 8)
     var flipCounter = 0 {
         didSet {
             flipCountLabel.text = "Flip count: \(flipCounter)"
