@@ -13,13 +13,17 @@ class ViewController: UIViewController {
     let game = Concentrate(numberOfPairsOfCards: 8)
     var flipCounter = 0 {
         didSet {
-            flipCountLabel.text = "Flip count: \(flipCounter)"
+            updateFlipCountLabel()
         }
     }
 
     @IBOutlet var cardButtons: [UIButton]!
 
-    @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet weak var flipCountLabel: UILabel! {
+        didSet {
+            updateFlipCountLabel()
+        }
+    }
     
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardIndex = cardButtons.firstIndex(of: sender) {
@@ -30,6 +34,16 @@ class ViewController: UIViewController {
         } else {
             print("Chose card not in cardButtons")
         }
+    }
+    
+    private func  updateFlipCountLabel() {
+        let attributes : [NSAttributedString.Key: Any] = [
+            .strokeWidth: 5.0,
+            .strokeColor: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        
+        ]
+        let attributedString = NSAttributedString(string: "Flip: \(flipCounter)", attributes: attributes)
+        flipCountLabel.attributedText = attributedString
     }
     
     func renderViewAfterChose() {
